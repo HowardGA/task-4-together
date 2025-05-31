@@ -21,7 +21,7 @@ export const authenticateUser = async (req, res, next) => {
 
     if (!user || user.status === 'BLOCKED') {
       req.session.destroy();
-      return res.status(401).json({ error: 'Session invalid' });
+      return res.status(401).json({ error: 'Unauthorized' });
     }
 
     req.user = user;
