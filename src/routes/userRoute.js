@@ -114,7 +114,7 @@ router.get('/', authenticateUser, async (req, res) => {
   }
 });
 
-router.put('/block', async (req, res) => {
+router.put('/block', authenticateUser, async (req, res) => {
   const { users } = req.body;
   if (!Array.isArray(users) || users.length === 0) {
     return res.status(400).json({ message: 'Users are required to block', success: false });
@@ -138,7 +138,7 @@ router.put('/block', async (req, res) => {
   }
 });
 
-router.delete('/delete', async (req, res) => {
+router.delete('/delete', authenticateUser, async (req, res) => {
   const { users } = req.body;
   if (!Array.isArray(users) || users.length === 0) {
     return res.status(400).json({ message: 'Users are required to delete', success: false });
@@ -161,7 +161,7 @@ router.delete('/delete', async (req, res) => {
   }
 });
 
-router.put('/activate', async (req, res) => {
+router.put('/activate', authenticateUser, async (req, res) => {
   const { users } = req.body;
   if (!Array.isArray(users) || users.length === 0) {
     return res.status(400).json({ message: 'Users are required to activate', success: false });
